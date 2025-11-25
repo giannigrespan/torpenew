@@ -164,7 +164,7 @@ export const CalendarSection: React.FC = () => {
                   <div
                     key={index}
                     className={`
-                      aspect-square flex items-center justify-center rounded-lg text-sm font-medium
+                      h-16 flex items-center justify-center rounded-lg text-base font-medium
                       ${!day.isCurrentMonth ? 'text-gray-300' : ''}
                       ${day.isOccupied
                         ? 'bg-red-100 text-red-700 border-2 border-red-300'
