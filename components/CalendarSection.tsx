@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 // L'ID del calendario viene caricato dalle variabili d'ambiente di Vercel
-// In Vite, le variabili d'ambiente pubbliche devono avere il prefisso VITE_
-const GOOGLE_CALENDAR_ID = import.meta.env.VITE_GOOGLE_CALENDAR_ID;
-const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
+// Le variabili sono esposte tramite process.env attraverso vite.config.ts
+const GOOGLE_CALENDAR_ID = process.env.GOOGLE_CALENDAR_ID;
+const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 
 interface CalendarDay {
   date: Date;
