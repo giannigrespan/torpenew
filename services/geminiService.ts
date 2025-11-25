@@ -1,8 +1,7 @@
 import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
 
-const API_KEY = process.env.API_KEY || '';
-
-const ai = new GoogleGenAI({ apiKey: API_KEY });
+// Initialize the client directly with the API key from process.env
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 const SYSTEM_INSTRUCTION = `
 Sei "Mauro", un assistente virtuale amichevole ed esperto per una casa vacanze situata a Torpè, in Sardegna.
@@ -20,10 +19,6 @@ Se ti chiedono disponibilità specifiche, rispondi che possono controllare il ca
 `;
 
 export const sendMessageToConcierge = async (message: string): Promise<string> => {
-  if (!API_KEY) {
-    return "Mi dispiace, il servizio di intelligenza artificiale non è configurato al momento (Manca API Key).";
-  }
-
   try {
     const response: GenerateContentResponse = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
@@ -37,6 +32,6 @@ export const sendMessageToConcierge = async (message: string): Promise<string> =
     return response.text || "Mi dispiace, non ho capito. Puoi ripetere?";
   } catch (error) {
     console.error("Gemini API Error:", error);
-    return "C'è stato un problema tecnico. Per favore riprova più tardi.";
+    return "C'è stato un problema tecnico momentaneo. Per favore riprova più tardi.";
   }
 };
