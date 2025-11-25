@@ -2,7 +2,7 @@ import React from 'react';
 
 // Using a public holiday calendar as a placeholder. 
 // In production, the user should replace this CID with their property's calendar ID.
-const GOOGLE_CALENDAR_ID = "en.italian%23holiday%40group.v.calendar.google.com";
+const GOOGLE_CALENDAR_ID = "30b4ce93b122922faa6a2d31336dca98611c0790fdd3732491f40593b14f2557@group.calendar.google.com";
 
 export const CalendarSection: React.FC = () => {
   return (
