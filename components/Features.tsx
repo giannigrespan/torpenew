@@ -1,0 +1,94 @@
+import React from 'react';
+import { Feature } from '../types';
+
+const FEATURES: Feature[] = [
+  {
+    title: "Vista Panoramica",
+    description: "Goditi tramonti spettacolari sulle colline e il castello della Fava dal terrazzo privato.",
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+      </svg>
+    ),
+  },
+  {
+    title: "Aria Condizionata",
+    description: "Ambienti freschi e confortevoli in tutte le stanze per il massimo relax estivo.",
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5" />
+      </svg>
+    ),
+  },
+  {
+    title: "Wi-Fi Gratuito",
+    description: "Connessione ad alta velocità per lavorare in smart working o guardare film in streaming.",
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
+      </svg>
+    ),
+  },
+  {
+    title: "Cucina Attrezzata",
+    description: "Tutto il necessario per preparare deliziose cene con prodotti locali sardi.",
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+      </svg>
+    ),
+  },
+  {
+    title: "Parcheggio",
+    description: "Parcheggio privato gratuito disponibile proprio davanti alla struttura.",
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+      </svg>
+    ),
+  },
+  {
+    title: "Posizione Strategica",
+    description: "A soli 5 minuti dalla superstrada 131 DCN e 10 minuti dalle spiagge.",
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+    ),
+  }
+];
+
+export const Features: React.FC = () => {
+  return (
+    <section id="features" className="py-20 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-serif font-bold text-gray-900 mb-4">I Nostri Servizi</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Abbiamo curato ogni dettaglio per rendere il tuo soggiorno indimenticabile, combinando il comfort moderno con l'ospitalità tradizionale sarda.
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {FEATURES.map((feature, index) => (
+            <div key={index} className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
+              <div className="w-12 h-12 bg-sardinia-sea/10 rounded-full flex items-center justify-center text-sardinia-sea mb-4">
+                {feature.icon}
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
+              <p className="text-gray-600">{feature.description}</p>
+            </div>
+          ))}
+        </div>
+        
+        {/* Simple Gallery Preview */}
+        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <img src="https://picsum.photos/id/1015/600/400" alt="Camera da letto" className="rounded-lg shadow-md hover:opacity-90 transition-opacity w-full object-cover h-64" />
+            <img src="https://picsum.photos/id/1080/600/400" alt="Cucina" className="rounded-lg shadow-md hover:opacity-90 transition-opacity w-full object-cover h-64" />
+            <img src="https://picsum.photos/id/1029/600/400" alt="Vista" className="rounded-lg shadow-md hover:opacity-90 transition-opacity w-full object-cover h-64" />
+        </div>
+      </div>
+    </section>
+  );
+};
