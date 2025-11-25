@@ -1,13 +1,48 @@
 import React, { useState } from 'react';
 
 export const ContactSection: React.FC = () => {
-  const [formStatus, setFormStatus] = useState<'idle' | 'submitted'>('idle');
+  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'submitted' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // ISTRUZIONI PER TELEGRAM:
+  // Inserire il link pubblico del bot (es. https://t.me/MioBot).
+  // È SICURO: Questo è solo un link, come un link a Instagram. 
+  // NON inserire mai il "Token" segreto del bot in questo file.
+  const TELEGRAM_LINK = "https://t.me/INSERISCI_QUI_IL_NOME_DEL_TUO_BOT";
+
+  // ISTRUZIONI PER IL FORM (EMAIL):
+  // 1. Vai su https://formspree.io/ (è gratis).
+  // 2. Crea un "New Form".
+  // 3. Copia l'URL che ti danno (es. https://formspree.io/f/xkdq....).
+  // 4. Incollalo qui sotto al posto di "https://formspree.io/f/YOUR_FORM_ID".
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // In a real app, send data to backend or email service here
-    setFormStatus('submitted');
-    setTimeout(() => setFormStatus('idle'), 3000);
+    setFormStatus('submitting');
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setFormStatus('submitted');
+        form.reset();
+        // Reset messaggio dopo 5 secondi
+        setTimeout(() => setFormStatus('idle'), 5000);
+      } else {
+        setFormStatus('error');
+      }
+    } catch (error) {
+      setFormStatus('error');
+    }
   };
 
   return (
@@ -56,7 +91,7 @@ export const ContactSection: React.FC = () => {
                 Preferisci una risposta immediata? Scrivi al nostro bot Telegram per info rapide.
               </p>
               <a 
-                href="https://t.me/myhouseinsardinia_bot" 
+                href={TELEGRAM_LINK}
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center w-full px-6 py-3 bg-[#0088cc] hover:bg-[#007dbb] text-white font-semibold rounded-lg transition-colors"
@@ -72,37 +107,72 @@ export const ContactSection: React.FC = () => {
           {/* Contact Form */}
           <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">Invia una richiesta</h3>
+            
             {formStatus === 'submitted' ? (
-              <div className="bg-green-50 text-green-700 p-4 rounded-lg text-center">
-                <p className="font-bold">Messaggio inviato!</p>
-                <p>Ti risponderemo il prima possibile.</p>
+              <div className="bg-green-50 text-green-700 p-6 rounded-lg text-center border border-green-200 animate-fade-in-up">
+                <svg className="w-12 h-12 mx-auto mb-3 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <p className="font-bold text-lg">Messaggio inviato con successo!</p>
+                <p className="text-sm mt-1">Ti risponderemo via email il prima possibile.</p>
               </div>
-            ) : (
+            ) : formStatus === 'error' ? (
+              <div className="bg-red-50 text-red-700 p-4 rounded-lg text-center border border-red-200 mb-6">
+                <p className="font-bold">Errore nell'invio.</p>
+                <p className="text-sm">Per favore controlla di aver inserito il tuo ID Formspree nel codice o riprova più tardi.</p>
+                <button 
+                  onClick={() => setFormStatus('idle')}
+                  className="mt-2 text-sm underline hover:text-red-800"
+                >
+                  Riprova
+                </button>
+              </div>
+            ) : null}
+
+            {formStatus !== 'submitted' && (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Nome Completo</label>
-                  <input required type="text" id="name" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sardinia-sea focus:border-transparent outline-none" placeholder="Mario Rossi" />
+                  <input required name="name" type="text" id="name" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sardinia-sea focus:border-transparent outline-none transition-all" placeholder="Mario Rossi" />
                 </div>
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                  <input required type="email" id="email" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sardinia-sea focus:border-transparent outline-none" placeholder="mario@email.com" />
+                  <input required name="email" type="email" id="email" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sardinia-sea focus:border-transparent outline-none transition-all" placeholder="mario@email.com" />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="checkin" className="block text-sm font-medium text-gray-700 mb-1">Check-in</label>
-                    <input type="date" id="checkin" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sardinia-sea focus:border-transparent outline-none" />
+                    <input name="checkin" type="date" id="checkin" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sardinia-sea focus:border-transparent outline-none transition-all" />
                   </div>
                   <div>
                     <label htmlFor="checkout" className="block text-sm font-medium text-gray-700 mb-1">Check-out</label>
-                    <input type="date" id="checkout" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sardinia-sea focus:border-transparent outline-none" />
+                    <input name="checkout" type="date" id="checkout" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sardinia-sea focus:border-transparent outline-none transition-all" />
                   </div>
                 </div>
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Messaggio</label>
-                  <textarea required id="message" rows={4} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sardinia-sea focus:border-transparent outline-none" placeholder="Vorrei sapere se sono ammessi animali..."></textarea>
+                  <textarea required name="message" id="message" rows={4} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sardinia-sea focus:border-transparent outline-none transition-all" placeholder="Vorrei sapere se sono ammessi animali..."></textarea>
                 </div>
-                <button type="submit" className="w-full bg-gray-900 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-800 transition-colors">
-                  Invia Messaggio
+                
+                {/* Campo nascosto per l'oggetto della mail su Formspree */}
+                <input type="hidden" name="_subject" value="Nuova richiesta dal sito Casa Torpè!" />
+
+                <button 
+                  type="submit" 
+                  disabled={formStatus === 'submitting'}
+                  className="w-full bg-gray-900 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex justify-center items-center"
+                >
+                  {formStatus === 'submitting' ? (
+                    <>
+                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Invio in corso...
+                    </>
+                  ) : (
+                    'Invia Messaggio'
+                  )}
                 </button>
               </form>
             )}
