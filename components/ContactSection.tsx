@@ -56,7 +56,7 @@ export const ContactSection: React.FC = () => {
                 Preferisci una risposta immediata? Scrivi al nostro bot Telegram per info rapide.
               </p>
               <a 
-                href="https://t.me/YOUR_TELEGRAM_BOT_NAME" 
+                href="https://t.me/myhouseinsardinia_bot" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center w-full px-6 py-3 bg-[#0088cc] hover:bg-[#007dbb] text-white font-semibold rounded-lg transition-colors"
