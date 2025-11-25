@@ -8,7 +8,7 @@ import React from 'react';
 // 5. Incolla l'ID qui sotto al posto della stringa di esempio.
 // Esempio ID: "mariorossi@gmail.com" oppure "c9...40group.calendar.google.com"
 
-const GOOGLE_CALENDAR_ID = "INSERISCI_QUI_IL_TUO_CALENDAR_ID"; 
+const GOOGLE_CALENDAR_ID = "30b4ce93b122922faa6a2d31336dca98611c0790fdd3732491f40593b14f2557@group.calendar.google.com"; 
 
 export const CalendarSection: React.FC = () => {
   // Codifichiamo l'ID per gestire caratteri speciali (come @ o #) nell'URL
@@ -27,7 +27,7 @@ export const CalendarSection: React.FC = () => {
 
         <div className="bg-white p-4 rounded-xl shadow-lg border border-gray-200">
           <div className="relative w-full overflow-hidden pt-[75%] sm:pt-[56.25%]">
-            {GOOGLE_CALENDAR_ID === "INSERISCI_QUI_IL_TUO_CALENDAR_ID" ? (
+            {GOOGLE_CALENDAR_ID === "30b4ce93b122922faa6a2d31336dca98611c0790fdd3732491f40593b14f2557@group.calendar.google.com" ? (
               <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-gray-100 text-gray-500">
                 <p>Configurazione Calendario mancante. Inserisci l'ID nel codice.</p>
               </div>
