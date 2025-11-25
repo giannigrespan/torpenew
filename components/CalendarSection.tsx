@@ -159,19 +159,20 @@ export const CalendarSection: React.FC = () => {
                 Caricamento...
               </div>
             ) : (
-              <div className="grid grid-cols-7 gap-2">
+              <div className="grid grid-cols-7 gap-2 sm:gap-3">
                 {calendarDays.map((day, index) => (
                   <div
                     key={index}
+                    style={{ minHeight: '64px' }}
                     className={`
-                      h-16 flex items-center justify-center rounded-lg text-base font-medium
-                      ${!day.isCurrentMonth ? 'text-gray-300' : ''}
+                      py-4 px-2 flex items-center justify-center rounded-lg text-lg font-semibold
+                      ${!day.isCurrentMonth ? 'text-gray-400 opacity-60' : ''}
                       ${day.isOccupied
-                        ? 'bg-red-100 text-red-700 border-2 border-red-300'
-                        : 'bg-green-100 text-green-700 border-2 border-green-300'
+                        ? 'bg-red-100 text-red-800 border-2 border-red-400'
+                        : 'bg-green-100 text-green-800 border-2 border-green-400'
                       }
-                      ${!day.isCurrentMonth && day.isOccupied ? 'bg-red-50 border-red-200' : ''}
-                      ${!day.isCurrentMonth && !day.isOccupied ? 'bg-green-50 border-green-200' : ''}
+                      ${!day.isCurrentMonth && day.isOccupied ? 'bg-red-50 border-red-300' : ''}
+                      ${!day.isCurrentMonth && !day.isOccupied ? 'bg-green-50 border-green-300' : ''}
                     `}
                   >
                     {day.date.getDate()}
