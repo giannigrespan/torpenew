@@ -5,17 +5,17 @@ export const ContactSection: React.FC = () => {
 
   // ISTRUZIONI PER TELEGRAM:
   // Inserire il link pubblico del bot (es. https://t.me/MioBot).
-  const TELEGRAM_LINK = "https://t.me/myhouseinsardinia_bot";
+  const TELEGRAM_LINK = "https://t.me/INSERISCI_QUI_IL_NOME_DEL_TUO_BOT";
 
   // ISTRUZIONI PER IL FORM (EMAIL):
   // 1. Vai su https://formspree.io/ (è gratis).
   // 2. Crea un "New Form".
   // 3. Copia l'URL che ti danno (es. https://formspree.io/f/xkdq....).
   // 4. Incollalo qui sotto al posto di "https://formspree.io/f/YOUR_FORM_ID".
-  const FORMSPREE_ENDPOINT = "https://formspree.io/f/mvgnvzzl";
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
 
   const handleTelegramClick = (e: React.MouseEvent) => {
-    if (TELEGRAM_LINK.includes("https://t.me/myhouseinsardinia_bot")) {
+    if (TELEGRAM_LINK.includes("INSERISCI_QUI")) {
       e.preventDefault();
       alert("⚠️ Configurazione Mancante\n\nDevi inserire il link del tuo bot Telegram nel file 'components/ContactSection.tsx' per far funzionare questo pulsante.");
     }
@@ -25,7 +25,7 @@ export const ContactSection: React.FC = () => {
     e.preventDefault();
 
     // Controllo di sicurezza: se l'utente non ha ancora configurato Formspree
-    if (FORMSPREE_ENDPOINT.includes("https://formspree.io/f/mvgnvzzl")) {
+    if (FORMSPREE_ENDPOINT.includes("YOUR_FORM_ID")) {
       alert("⚠️ Configurazione Mancante\n\nPer ricevere le email, devi creare un form su Formspree.io e incollare l'URL nel file 'components/ContactSection.tsx' alla riga 'const FORMSPREE_ENDPOINT'.");
       return;
     }
@@ -50,9 +50,12 @@ export const ContactSection: React.FC = () => {
         // Reset messaggio dopo 5 secondi
         setTimeout(() => setFormStatus('idle'), 5000);
       } else {
+        const json = await response.json().catch(() => null);
+        console.error("Formspree error:", json);
         setFormStatus('error');
       }
     } catch (error) {
+      console.error("Network error:", error);
       setFormStatus('error');
     }
   };
@@ -132,7 +135,7 @@ export const ContactSection: React.FC = () => {
             ) : formStatus === 'error' ? (
               <div className="bg-red-50 text-red-700 p-4 rounded-lg text-center border border-red-200 mb-6">
                 <p className="font-bold">Errore nell'invio.</p>
-                <p className="text-sm">Assicurati di aver configurato l'ID Formspree nel codice.</p>
+                <p className="text-sm">Assicurati di aver configurato l'ID Formspree nel codice o riprova più tardi.</p>
                 <button 
                   onClick={() => setFormStatus('idle')}
                   className="mt-2 text-sm underline hover:text-red-800"
@@ -144,32 +147,40 @@ export const ContactSection: React.FC = () => {
 
             {formStatus !== 'submitted' && (
               <form onSubmit={handleSubmit} className="space-y-6">
+                
+                {/* Anti-spam honeypot (campo invisibile per bot) */}
+                <input type="text" name="_gotcha" style={{ display: 'none' }} />
+
+                {/* Opzionali: personalizza oggetto email o risposta */}
+                <input type="hidden" name="_subject" value="Nuova richiesta prenotazione" />
+                <input type="hidden" name="_language" value="it" />
+
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Nome Completo</label>
-                  <input required name="name" type="text" id="name" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sardinia-sea focus:border-transparent outline-none transition-all" placeholder="Mario Rossi" />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                  <input required name="email" type="email" id="email" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sardinia-sea focus:border-transparent outline-none transition-all" placeholder="mario@email.com" />
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="checkin" className="block text-sm font-medium text-gray-700 mb-1">Check-in</label>
-                    <input name="checkin" type="date" id="checkin" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sardinia-sea focus:border-transparent outline-none transition-all" />
-                  </div>
-                  <div>
-                    <label htmlFor="checkout" className="block text-sm font-medium text-gray-700 mb-1">Check-out</label>
-                    <input name="checkout" type="date" id="checkout" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sardinia-sea focus:border-transparent outline-none transition-all" />
-                  </div>
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Messaggio</label>
-                  <textarea required name="message" id="message" rows={4} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sardinia-sea focus:border-transparent outline-none transition-all" placeholder="Vorrei sapere se sono ammessi animali..."></textarea>
+                  <label htmlFor="fullname" className="block text-sm font-medium text-gray-700 mb-1">Nome Completo</label>
+                  <input required name="nome_completo" type="text" id="fullname" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sardinia-sea focus:border-transparent outline-none transition-all" placeholder="Mario Rossi" />
                 </div>
                 
-                {/* Campo nascosto per l'oggetto della mail su Formspree */}
-                <input type="hidden" name="_subject" value="Nuova richiesta dal sito Casa Torpè!" />
-
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                  <input required name="email" type="email" id="email" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sardinia-sea focus:border-transparent outline-none transition-all" placeholder="mario@esempio.com" />
+                </div>
+                
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="checkin" className="block text-sm font-medium text-gray-700 mb-1">Data Check-in</label>
+                    <input name="data_checkin" type="date" id="checkin" required className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sardinia-sea focus:border-transparent outline-none transition-all" />
+                  </div>
+                  <div>
+                    <label htmlFor="checkout" className="block text-sm font-medium text-gray-700 mb-1">Data Check-out</label>
+                    <input name="data_checkout" type="date" id="checkout" required className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sardinia-sea focus:border-transparent outline-none transition-all" />
+                  </div>
+                </div>
+                
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Messaggio</label>
+                  <textarea required name="messaggio" id="message" rows={5} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sardinia-sea focus:border-transparent outline-none transition-all" placeholder="Richieste, note, numero ospiti..."></textarea>
+                </div>
+                
                 <button 
                   type="submit" 
                   disabled={formStatus === 'submitting'}
@@ -184,7 +195,7 @@ export const ContactSection: React.FC = () => {
                       Invio in corso...
                     </>
                   ) : (
-                    'Invia Messaggio'
+                    'Invia'
                   )}
                 </button>
               </form>
