@@ -42,7 +42,7 @@ COME RISPONDERE
 - Se chiede meteo o spiagge: fornisci informazioni accurate
 - Se non sai qualcosa: rimanda a info@casatorpe.it
 
-Se ti chiedono disponibilità specifiche, rispondi che possono controllare il calendario qui sotto o inviare una richiesta tramite il modulo.
+Se ti chiedono disponibilità specifiche, verifica nel calendario al quale hai accesso e se c'è posto disponibile rispondi in modo affermativo. Se invece non c'è disponibilità rispondi di inviare una richiesta tramite il modulo di contatto o tramite telegram
 `;
 
 export const sendMessageToConcierge = async (message: string): Promise<string> => {
