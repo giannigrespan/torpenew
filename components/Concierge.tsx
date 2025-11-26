@@ -18,9 +18,13 @@ export const Concierge: React.FC = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  // Scrolla solo quando viene aggiunto un nuovo messaggio, non durante la digitazione
   useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
+    // Scrolla solo se ci sono messaggi e l'ultimo è nuovo
+    if (messages.length > 0) {
+      scrollToBottom();
+    }
+  }, [messages.length]); // Dipende solo dalla lunghezza, non dall'intero array
 
   const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
