@@ -12,19 +12,21 @@ export const Concierge: React.FC = () => {
   ]);
   const [inputValue, setInputValue] = useState('');
   const [loadingState, setLoadingState] = useState<LoadingState>(LoadingState.IDLE);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
   };
 
-  // Scrolla solo quando viene aggiunto un nuovo messaggio, non durante la digitazione
+  // Scrolla solo quando viene aggiunto un nuovo messaggio
   useEffect(() => {
-    // Scrolla solo se ci sono messaggi e l'ultimo è nuovo
     if (messages.length > 0) {
-      scrollToBottom();
+      // Usa setTimeout per assicurarsi che il DOM sia aggiornato
+      setTimeout(scrollToBottom, 100);
     }
-  }, [messages.length]); // Dipende solo dalla lunghezza, non dall'intero array
+  }, [messages.length]);
 
   const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -70,7 +72,10 @@ export const Concierge: React.FC = () => {
 
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200 flex flex-col h-[500px]">
           {/* Chat Area */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
+          <div
+            ref={chatContainerRef}
+            className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50"
+          >
             {messages.map((msg, idx) => (
               <div
                 key={idx}
@@ -98,7 +103,6 @@ export const Concierge: React.FC = () => {
                 </div>
               </div>
             )}
-            <div ref={messagesEndRef} />
           </div>
 
           {/* Input Area */}
