@@ -6,7 +6,7 @@ export const Concierge: React.FC = () => {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: 'model',
-      text: 'Ciao! Sono Laura, il tuo assistente virtuale per Casa Vacanze Torpè. Come posso aiutarti oggi? Chiedimi pure delle spiagge vicine o dei migliori ristoranti!',
+      text: 'Ciao! Sono Laura, il tuo assistente virtuale per Casa Vacanze Torpè. Come posso aiutarti oggi? ',
       timestamp: new Date()
     }
   ]);
