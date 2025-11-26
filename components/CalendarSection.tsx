@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-// L'ID del calendario viene caricato dalle variabili d'ambiente di Vercel (GOOGLE_CALENDAR_ID)
+// L'ID del calendario viene caricato dalle variabili d'ambiente di Vercel
+// Le variabili sono esposte tramite process.env attraverso vite.config.ts
 const GOOGLE_CALENDAR_ID = process.env.GOOGLE_CALENDAR_ID;
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 
@@ -14,6 +15,7 @@ export const CalendarSection: React.FC = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [calendarDays, setCalendarDays] = useState<CalendarDay[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetchCalendarData();
@@ -27,6 +29,7 @@ export const CalendarSection: React.FC = () => {
 
     try {
       setLoading(true);
+      setError(null);
       const year = currentDate.getFullYear();
       const month = currentDate.getMonth();
 
@@ -52,7 +55,15 @@ export const CalendarSection: React.FC = () => {
       );
 
       if (!response.ok) {
-        throw new Error('Errore nel caricamento del calendario');
+        if (response.status === 403) {
+          setError('Il calendario non è accessibile. Assicurati che sia pubblico.');
+        } else if (response.status === 404) {
+          setError('Calendario non trovato. Verifica l\'ID del calendario.');
+        } else {
+          setError('Errore nel caricamento del calendario. Riprova più tardi.');
+        }
+        setCalendarDays([]);
+        return;
       }
 
       const data = await response.json();
@@ -79,8 +90,11 @@ export const CalendarSection: React.FC = () => {
       }
 
       setCalendarDays(days);
+      setError(null);
     } catch (error) {
       console.error('Errore nel caricamento del calendario:', error);
+      setError('Errore di connessione. Verifica la configurazione.');
+      setCalendarDays([]);
     } finally {
       setLoading(false);
     }
@@ -157,20 +171,32 @@ export const CalendarSection: React.FC = () => {
               <div className="text-center py-12 text-gray-500">
                 Caricamento...
               </div>
+            ) : error ? (
+              <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6 text-center">
+                <div className="text-red-700 font-semibold mb-2">⚠️ {error}</div>
+                <div className="text-red-600 text-sm">
+                  Per risolvere, segui le istruzioni di configurazione fornite dal supporto.
+                </div>
+              </div>
+            ) : calendarDays.length === 0 ? (
+              <div className="text-center py-12 text-gray-500">
+                Nessun dato disponibile
+              </div>
             ) : (
-              <div className="grid grid-cols-7 gap-2">
+              <div className="grid grid-cols-7 gap-2 sm:gap-3">
                 {calendarDays.map((day, index) => (
                   <div
                     key={index}
+                    style={{ minHeight: '64px' }}
                     className={`
-                      aspect-square flex items-center justify-center rounded-lg text-sm font-medium
-                      ${!day.isCurrentMonth ? 'text-gray-300' : ''}
+                      py-4 px-2 flex items-center justify-center rounded-lg text-lg font-semibold
+                      ${!day.isCurrentMonth ? 'text-gray-400 opacity-60' : ''}
                       ${day.isOccupied
-                        ? 'bg-red-100 text-red-700 border-2 border-red-300'
-                        : 'bg-green-100 text-green-700 border-2 border-green-300'
+                        ? 'bg-red-100 text-red-800 border-2 border-red-400'
+                        : 'bg-green-100 text-green-800 border-2 border-green-400'
                       }
-                      ${!day.isCurrentMonth && day.isOccupied ? 'bg-red-50 border-red-200' : ''}
-                      ${!day.isCurrentMonth && !day.isOccupied ? 'bg-green-50 border-green-200' : ''}
+                      ${!day.isCurrentMonth && day.isOccupied ? 'bg-red-50 border-red-300' : ''}
+                      ${!day.isCurrentMonth && !day.isOccupied ? 'bg-green-50 border-green-300' : ''}
                     `}
                   >
                     {day.date.getDate()}
