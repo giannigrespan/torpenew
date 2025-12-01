@@ -87,7 +87,7 @@ export const ContactSection: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-gray-900">Email</h4>
-                  <p className="text-gray-600">info@casavacanzetorpe.it</p>
+                  <p className="text-gray-600">torpe.holidayhome@gmail.com</p>
                 </div>
               </div>
             </div>
