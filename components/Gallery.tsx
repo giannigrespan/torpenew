@@ -69,7 +69,7 @@ export const Gallery: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('Tutte');
 
   // Estrai categorie uniche
-  const categories = ['Tutte', ...Array.from(new Set(GALLERY_IMAGES.map(img => img.category).filter(Boolean)))];
+  const categories = ['Tutte', ...Array.from(new Set(GALLERY_IMAGES.map(img => img.category).filter((cat): cat is string => Boolean(cat))))];
 
   // Filtra immagini per categoria
   const filteredImages = selectedCategory === 'Tutte'
