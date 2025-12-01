@@ -3,6 +3,7 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Features } from './components/Features';
 import { Gallery } from './components/Gallery';
+import { Excursions } from './components/Excursions';
 import { CalendarSection } from './components/CalendarSection';
 import { Concierge } from './components/Concierge';
 import { ContactSection } from './components/ContactSection';
@@ -29,6 +30,7 @@ const App: React.FC = () => {
         <Hero />
         <Features />
         <Gallery />
+        <Excursions />
         <CalendarSection />
         <Concierge />
         <ContactSection />
