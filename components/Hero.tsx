@@ -5,9 +5,9 @@ export const Hero: React.FC = () => {
 
   // Array di immagini - Usa placeholder temporanei o carica le tue in /public/images/
   const images = [       
-    '/images/slide1.jpg',
-    '/images/slide2.jpg',
-    '/images/slide3.jpg'
+    '/public/slide1.jpg',
+    '/public/slide2.jpg',
+    '/public/slide3.jpg'
   ];
 
   // Auto-scroll ogni 5 secondi
