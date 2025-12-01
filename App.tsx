@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Features } from './components/Features';
+import { Gallery } from './components/Gallery';
 import { CalendarSection } from './components/CalendarSection';
 import { Concierge } from './components/Concierge';
 import { ContactSection } from './components/ContactSection';
@@ -27,6 +28,7 @@ const App: React.FC = () => {
       <main>
         <Hero />
         <Features />
+        <Gallery />
         <CalendarSection />
         <Concierge />
         <ContactSection />
