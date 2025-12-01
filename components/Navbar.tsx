@@ -4,6 +4,7 @@ import { NavItem } from '../types';
 const NAV_ITEMS: NavItem[] = [
   { label: 'Home', href: '#home' },
   { label: 'L\'Appartamento', href: '#features' },
+  { label: 'Galleria', href: '#gallery' },
   { label: 'Disponibilità', href: '#calendar' },
   { label: 'Concierge AI', href: '#concierge' },
   { label: 'Contatti', href: '#contact' },
