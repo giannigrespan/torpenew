@@ -15,12 +15,12 @@ const GALLERY_IMAGES: GalleryImage[] = [
     category: 'Esterni'
   },
   {
-    url: '/images/gallery/terrazzo-2.webp',
+    url: '/terrazzo-2.webp',
     alt: 'Terrazzo attrezzato per pranzi all\'aperto',
     category: 'Esterni'
   },
   {
-    url: '/images/gallery/terrazzino-1.webp',
+    url: '/terrazzino-1.webp',
     alt: 'Terrazzino coperto con zona pranzo',
     category: 'Esterni'
   },
