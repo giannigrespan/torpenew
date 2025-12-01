@@ -15,7 +15,7 @@ const EXCURSIONS: Excursion[] = [
   {
     name: 'Spiaggia di Cala Ginepro',
     description: 'Una delle spiagge più belle della zona, con sabbia bianca finissima e mare cristallino. Ideale per famiglie e sport acquatici.',
-    image: '/images/excursions/cala-ginepro.jpg',
+    image: '/cala ginepro.jpg',
     distance: '15 km',
     category: 'Spiagge',
     duration: '20 min'
@@ -23,7 +23,7 @@ const EXCURSIONS: Excursion[] = [
   {
     name: 'Spiaggia di Berchida',
     description: 'Spiaggia incontaminata circondata da dune e ginepri, perfetta per chi cerca tranquillità e natura selvaggia.',
-    image: '/images/excursions/berchida.jpg',
+    image: '/berchida.jpg',
     distance: '12 km',
     category: 'Spiagge',
     duration: '18 min'
@@ -31,7 +31,7 @@ const EXCURSIONS: Excursion[] = [
   {
     name: 'Cala Liberotto',
     description: 'Piccola baia con acque turchesi e scogli pittoreschi. Ottima per snorkeling e immersioni.',
-    image: '/images/excursions/cala-liberotto.jpg',
+    image: '/liberotto.jpg',
     distance: '18 km',
     category: 'Spiagge',
     duration: '25 min'
@@ -39,7 +39,7 @@ const EXCURSIONS: Excursion[] = [
   {
     name: 'Spiaggia di Orosei',
     description: 'Lunga spiaggia di sabbia dorata con tutti i servizi, ristoranti e stabilimenti balneari.',
-    image: '/images/excursions/orosei-beach.jpg',
+    image: '/orosei.jpg',
     distance: '20 km',
     category: 'Spiagge',
     duration: '25 min'
@@ -49,7 +49,7 @@ const EXCURSIONS: Excursion[] = [
   {
     name: 'Monte Albo',
     description: 'Massiccio calcareo con sentieri panoramici e vista mozzafiato sulla costa orientale. Trekking di vari livelli di difficoltà.',
-    image: '/images/excursions/monte-albo.jpg',
+    image: '/albo.jpg',
     distance: '8 km',
     category: 'Natura e Montagna',
     duration: '15 min'
@@ -57,7 +57,7 @@ const EXCURSIONS: Excursion[] = [
   {
     name: 'Grotte di Monte Albo',
     description: 'Sistema di grotte naturali con formazioni rocciose spettacolari. Visite guidate disponibili.',
-    image: '/images/excursions/grotte-monte-albo.jpg',
+    image: '/cava ispica.jpg',
     distance: '10 km',
     category: 'Natura e Montagna',
     duration: '15 min'
@@ -65,7 +65,7 @@ const EXCURSIONS: Excursion[] = [
   {
     name: 'Foresta di Sos Nibberos',
     description: 'Foresta secolare di lecci e sughere, perfetta per passeggiate naturalistiche e birdwatching.',
-    image: '/images/excursions/foresta.jpg',
+    image: '/niberros.jpg',
     distance: '25 km',
     category: 'Natura e Montagna',
     duration: '30 min'
@@ -75,7 +75,7 @@ const EXCURSIONS: Excursion[] = [
   {
     name: 'Centro Storico di Orosei',
     description: 'Borgo medievale con chiese storiche, piazze caratteristiche e architettura tradizionale sarda.',
-    image: '/images/excursions/orosei-centro.jpg',
+    image: '/orosei citta.jpg',
     distance: '20 km',
     category: 'Cultura e Storia',
     duration: '25 min'
@@ -83,7 +83,7 @@ const EXCURSIONS: Excursion[] = [
   {
     name: 'Nuraghe di Loelle',
     description: 'Sito archeologico nuragico ben conservato, testimonianza dell\'antica civiltà sarda.',
-    image: '/images/excursions/nuraghe.jpg',
+    image: '/loelle.jpg',
     distance: '15 km',
     category: 'Cultura e Storia',
     duration: '20 min'
@@ -91,7 +91,7 @@ const EXCURSIONS: Excursion[] = [
   {
     name: 'Chiesa di San Pietro a Torpè',
     description: 'Antica chiesa romanica del XII secolo con affreschi e architettura tipica del periodo.',
-    image: '/images/excursions/chiesa-san-pietro.jpg',
+    image: '/nuraghe.jpg',
     distance: '2 km',
     category: 'Cultura e Storia',
     duration: '5 min'
@@ -101,7 +101,7 @@ const EXCURSIONS: Excursion[] = [
   {
     name: 'Giro in Barca a Cala Luna',
     description: 'Escursione in barca alle famose calette del Golfo di Orosei, con possibilità di snorkeling.',
-    image: '/images/excursions/cala-luna.jpg',
+    image: '/cala luna.jpg',
     distance: '25 km (porto)',
     category: 'Attività',
     duration: 'Giornata intera'
@@ -109,7 +109,7 @@ const EXCURSIONS: Excursion[] = [
   {
     name: 'Trekking Gola di Gorropu',
     description: 'Uno dei canyon più profondi d\'Europa. Esperienza indimenticabile per amanti del trekking.',
-    image: '/images/excursions/gorropu.jpg',
+    image: '/gorroppu.jpg',
     distance: '60 km',
     category: 'Attività',
     duration: '1h 15min'
