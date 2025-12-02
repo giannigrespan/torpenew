@@ -81,7 +81,11 @@ export const CalendarSection: React.FC = () => {
         const dateStr = currentDateIter.toISOString().split('T')[0];
         const hasEvent = events.some((event: any) => {
           const eventStart = event.start.date || event.start.dateTime?.split('T')[0];
-          return eventStart === dateStr;
+          const eventEnd = event.end.date || event.end.dateTime?.split('T')[0];
+
+          // Controlla se la data corrente cade all'interno dell'intervallo dell'evento
+          // Per gli eventi all-day, l'end date è esclusivo (es: evento dal 5 al 10 ha end=11)
+          return dateStr >= eventStart && dateStr < eventEnd;
         });
 
         days.push({
