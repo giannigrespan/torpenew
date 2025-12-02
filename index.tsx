@@ -1,5 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { inject } from '@vercel/analytics';
+import App from './App';
+
+// Initialize Vercel Web Analytics
+inject();
 import { injectSpeedInsights } from '@vercel/speed-insights';
 import App from './App';
 
