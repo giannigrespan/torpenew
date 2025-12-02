@@ -59,9 +59,9 @@ export const Navbar: React.FC = () => {
             <div className="relative">
               <button
                 onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-                className="flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-sardinia-sea transition-colors"
+                className="flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-sardinia-sea transition-colors border border-gray-200 hover:border-sardinia-sea"
               >
-                <span>{currentLanguage.flag}</span>
+                <span className="text-xl">{currentLanguage.flag}</span>
                 <span>{currentLanguage.name}</span>
                 <svg className={`w-4 h-4 transition-transform ${isLangMenuOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -69,16 +69,16 @@ export const Navbar: React.FC = () => {
               </button>
 
               {isLangMenuOpen && (
-                <div className="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-100">
+                <div className="absolute right-0 mt-2 w-44 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-100">
                   {LANGUAGES.map((lang) => (
                     <button
                       key={lang.code}
                       onClick={() => changeLanguage(lang.code)}
-                      className={`w-full text-left px-4 py-2 text-sm hover:bg-gray-100 flex items-center space-x-2 ${
-                        i18n.language === lang.code ? 'bg-sardinia-sea/10 text-sardinia-sea' : 'text-gray-700'
+                      className={`w-full text-left px-4 py-2 text-sm hover:bg-gray-100 flex items-center space-x-3 ${
+                        i18n.language === lang.code ? 'bg-sardinia-sea/10 text-sardinia-sea font-semibold' : 'text-gray-700'
                       }`}
                     >
-                      <span>{lang.flag}</span>
+                      <span className="text-xl">{lang.flag}</span>
                       <span>{lang.name}</span>
                     </button>
                   ))}
@@ -99,16 +99,16 @@ export const Navbar: React.FC = () => {
               </button>
 
               {isLangMenuOpen && (
-                <div className="absolute right-0 mt-2 w-32 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-100">
+                <div className="absolute right-0 mt-2 w-36 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-100">
                   {LANGUAGES.map((lang) => (
                     <button
                       key={lang.code}
                       onClick={() => changeLanguage(lang.code)}
-                      className={`w-full text-left px-4 py-2 text-sm hover:bg-gray-100 flex items-center space-x-2 ${
-                        i18n.language === lang.code ? 'bg-sardinia-sea/10 text-sardinia-sea' : 'text-gray-700'
+                      className={`w-full text-left px-4 py-2 text-sm hover:bg-gray-100 flex items-center space-x-3 ${
+                        i18n.language === lang.code ? 'bg-sardinia-sea/10 text-sardinia-sea font-semibold' : 'text-gray-700'
                       }`}
                     >
-                      <span>{lang.flag}</span>
+                      <span className="text-lg">{lang.flag}</span>
                       <span>{lang.name}</span>
                     </button>
                   ))}
