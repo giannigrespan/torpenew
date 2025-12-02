@@ -77,17 +77,6 @@ const fetchCalendarEvents = async (startDate: Date, endDate: Date): Promise<any[
   }
 };
 
-// Funzione per verificare se una data specifica è occupata
-const isDateOccupied = (dateStr: string, events: any[]): boolean => {
-  return events.some((event: any) => {
-    const eventStart = event.start.date || event.start.dateTime?.split('T')[0];
-    const eventEnd = event.end.date || event.end.dateTime?.split('T')[0];
-
-    // Controlla se la data cade all'interno dell'intervallo dell'evento
-    return dateStr >= eventStart && dateStr < eventEnd;
-  });
-};
-
 // Funzione per ottenere lo stato di disponibilità del calendario
 const getCalendarAvailability = async (): Promise<string> => {
   const today = new Date();
