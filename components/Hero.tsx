@@ -87,7 +87,7 @@ export const Hero: React.FC = () => {
             href="#concierge"
             className="px-8 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 font-semibold rounded-lg shadow-lg transition-all"
           >
-            Chiedi al Concierge AI
+            Chiedi all'Assistente Personale
           </a>
         </div>
 

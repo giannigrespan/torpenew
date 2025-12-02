@@ -240,7 +240,7 @@ export const Excursions: React.FC = () => {
                 Consigli per le tue escursioni
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                La nostra assistente AI <strong>Concierge</strong> può fornirti informazioni dettagliate
+                La nostra assistente AI <strong>Assistente Personale</strong> può fornirti informazioni dettagliate
                 su orari, prenotazioni e consigli personalizzati per ogni destinazione.
                 Non esitare a contattarci per organizzare la tua esperienza perfetta!
               </p>

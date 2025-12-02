@@ -7,7 +7,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: 'Galleria', href: '#gallery' },
   { label: 'Escursioni', href: '#excursions' },
   { label: 'Disponibilità', href: '#calendar' },
-  { label: 'Concierge AI', href: '#concierge' },
+  { label: 'Assistente Personale', href: '#concierge' },
   { label: 'Contatti', href: '#contact' },
 ];
 
