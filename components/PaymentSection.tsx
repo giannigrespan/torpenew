@@ -9,6 +9,7 @@ interface PaymentMethod {
 
 const PAYMENT_METHODS: PaymentMethod[] = [
   { id: 'paypal', name: 'PayPal', icon: '💳' },
+  { id: 'revolut', name: 'Revolut', icon: '💷' },
   { id: 'bitcoin', name: 'Bitcoin', icon: '₿' },
   { id: 'ethereum', name: 'Ethereum', icon: 'Ξ' },
   { id: 'usdt', name: 'USDT', icon: '₮' }
@@ -48,6 +49,9 @@ export const PaymentSection: React.FC = () => {
 
   // PayPal Client ID (da configurare nelle variabili d'ambiente)
   const paypalClientId = import.meta.env.VITE_PAYPAL_CLIENT_ID;
+
+  // Revolut Payment Link (da configurare nelle variabili d'ambiente)
+  const revolutPaymentLink = import.meta.env.VITE_REVOLUT_PAYMENT_LINK;
 
   useEffect(() => {
     // Carica PayPal SDK solo se il metodo PayPal è selezionato
@@ -202,6 +206,40 @@ export const PaymentSection: React.FC = () => {
                     {t('payment.paypalDescription')}
                   </p>
                   <div id="paypal-button-container"></div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {selectedMethod === 'revolut' && (
+            <div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                {t('payment.payWithRevolut')}
+              </h3>
+              {!revolutPaymentLink ? (
+                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
+                  <p className="text-yellow-800">
+                    ⚠️ {t('payment.configMissingRevolut')}
+                  </p>
+                </div>
+              ) : (
+                <div>
+                  <p className="text-gray-600 mb-4">
+                    {t('payment.revolutDescription')}
+                  </p>
+                  <a
+                    href={revolutPaymentLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-lg shadow-lg transition-all transform hover:scale-105"
+                  >
+                    {t('payment.openRevolut')}
+                  </a>
+                  <div className="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <p className="text-sm text-blue-800">
+                      ℹ️ {t('payment.revolutInfo')}
+                    </p>
+                  </div>
                 </div>
               )}
             </div>
