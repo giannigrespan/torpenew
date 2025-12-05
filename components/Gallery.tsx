@@ -19,6 +19,16 @@ const CATEGORY_TRANSLATION_KEYS: Record<string, string> = {
 const GALLERY_IMAGES: GalleryImage[] = [
   // Esterni
   {
+    url: '/esterno-cortile.webp',
+    alt: 'Cortile interno del residence con ulivi',
+    category: 'Esterni'
+  },
+  {
+    url: '/esterno-ingresso.webp',
+    alt: 'Ingresso del residence con cancello',
+    category: 'Esterni'
+  },
+  {
     url: '/terrazzo-1.webp',
     alt: 'Terrazzo panoramico con vista',
     category: 'Esterni'
