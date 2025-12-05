@@ -28,14 +28,14 @@ const EXCURSIONS: Excursion[] = [
   },
   {
     translationKey: 'excursions.places.calaBrandinchi',
-    image: '/berchida.jpg',
+    image: '/Cala-Brandinchi.webp,
     distance: '14 km',
     category: 'beaches',
     duration: '20 min'
   },
   {
     translationKey: 'excursions.places.laCinta',
-    image: '/berchida.jpg',
+    image: '/lacinta1.jpg',
     distance: '10 km',
     category: 'beaches',
     duration: '15 min'
