@@ -20,13 +20,6 @@ const EXCURSIONS: Excursion[] = [
     duration: '1 ora'
   },
   {
-    translationKey: 'excursions.places.calaGinepro',
-    image: '/cala ginepro.jpg',
-    distance: '15 km',
-    category: 'beaches',
-    duration: '20 min'
-  },
-  {
     translationKey: 'excursions.places.berchida',
     image: '/berchida.jpg',
     distance: '12 km',
@@ -34,51 +27,21 @@ const EXCURSIONS: Excursion[] = [
     duration: '18 min'
   },
   {
-    translationKey: 'excursions.places.calaLiberotto',
-    image: '/liberotto.jpg',
-    distance: '18 km',
+    translationKey: 'excursions.places.calaBrandinchi',
+    image: '/berchida.jpg',
+    distance: '14 km',
     category: 'beaches',
-    duration: '25 min'
+    duration: '20 min'
   },
   {
-    translationKey: 'excursions.places.orosei',
-    image: '/orosei.jpg',
-    distance: '20 km',
-    category: 'beaches',
-    duration: '25 min'
-  },
-
-  // Natura e Montagna
-  {
-    translationKey: 'excursions.places.monteAlbo',
-    image: '/albo.jpg',
-    distance: '8 km',
-    category: 'natureMountain',
-    duration: '15 min'
-  },
-  {
-    translationKey: 'excursions.places.grotteMonteAlbo',
-    image: '/cava ispica.jpg',
+    translationKey: 'excursions.places.laCinta',
+    image: '/berchida.jpg',
     distance: '10 km',
-    category: 'natureMountain',
+    category: 'beaches',
     duration: '15 min'
-  },
-  {
-    translationKey: 'excursions.places.forestaSosNibberos',
-    image: '/niberros.jpg',
-    distance: '25 km',
-    category: 'natureMountain',
-    duration: '30 min'
   },
 
   // Cultura e Storia
-  {
-    translationKey: 'excursions.places.oroseiCentro',
-    image: '/orosei citta.jpg',
-    distance: '20 km',
-    category: 'cultureHistory',
-    duration: '25 min'
-  },
   {
     translationKey: 'excursions.places.nuragheLoelle',
     image: '/loelle.jpg',
@@ -86,22 +49,8 @@ const EXCURSIONS: Excursion[] = [
     category: 'cultureHistory',
     duration: '20 min'
   },
-  {
-    translationKey: 'excursions.places.chiesaSanPietro',
-    image: '/nuraghe.jpg',
-    distance: '2 km',
-    category: 'cultureHistory',
-    duration: '5 min'
-  },
 
   // Attività
-  {
-    translationKey: 'excursions.places.giroBarca',
-    image: '/cala luna.jpg',
-    distance: '25 km (porto)',
-    category: 'activities',
-    duration: 'Giornata intera'
-  },
   {
     translationKey: 'excursions.places.gorropu',
     image: '/gorroppu.jpg',

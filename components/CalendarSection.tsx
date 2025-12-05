@@ -142,52 +142,52 @@ export const CalendarSection: React.FC = () => {
   ];
 
   return (
-    <section id="calendar" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-serif font-bold text-gray-900 mb-4">{t('calendar.title')}</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+    <section id="calendar" className="py-16 bg-white">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-8">
+          <h2 className="text-2xl font-serif font-bold text-gray-900 mb-3">{t('calendar.title')}</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto text-sm">
             {t('calendar.subtitle')}
           </p>
         </div>
 
         {!GOOGLE_CALENDAR_ID || !GOOGLE_API_KEY ? (
-          <div className="bg-gray-100 p-8 rounded-xl text-center text-gray-500">
+          <div className="bg-gray-100 p-6 rounded-lg text-center text-gray-500 text-sm">
             <p>{t('calendar.notConfigured')}</p>
           </div>
         ) : (
-          <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-200 max-w-4xl mx-auto">
+          <div className="bg-white p-4 rounded-lg shadow-md border border-gray-200 max-w-3xl mx-auto">
             {/* Header con navigazione mesi */}
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center justify-between mb-4">
               <button
                 onClick={() => changeMonth(-1)}
-                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                className="p-1.5 hover:bg-gray-100 rounded-lg transition-colors"
                 aria-label={t('calendar.previousMonth')}
               >
-                <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
 
-              <h3 className="text-2xl font-semibold text-gray-900">
+              <h3 className="text-lg font-semibold text-gray-900">
                 {monthNames[currentDate.getMonth()]} {currentDate.getFullYear()}
               </h3>
 
               <button
                 onClick={() => changeMonth(1)}
-                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                className="p-1.5 hover:bg-gray-100 rounded-lg transition-colors"
                 aria-label={t('calendar.nextMonth')}
               >
-                <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </button>
             </div>
 
             {/* Giorni della settimana */}
-            <div className="grid grid-cols-7 gap-2 mb-2">
+            <div className="grid grid-cols-7 gap-1 mb-1">
               {dayNames.map((day) => (
-                <div key={day} className="text-center font-medium text-gray-600 text-sm py-2">
+                <div key={day} className="text-center font-medium text-gray-600 text-xs py-1">
                   {day}
                 </div>
               ))}
@@ -195,32 +195,32 @@ export const CalendarSection: React.FC = () => {
 
             {/* Griglia calendario */}
             {loading ? (
-              <div className="text-center py-12 text-gray-500">
+              <div className="text-center py-8 text-gray-500 text-sm">
                 {t('calendar.loading')}
               </div>
             ) : error ? (
-              <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6 text-center">
-                <div className="text-red-700 font-semibold mb-2">⚠️ {error}</div>
-                <div className="text-red-600 text-sm">
+              <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4 text-center">
+                <div className="text-red-700 font-semibold mb-1 text-sm">⚠️ {error}</div>
+                <div className="text-red-600 text-xs">
                   {t('calendar.errors.instructions')}
                 </div>
               </div>
             ) : calendarDays.length === 0 ? (
-              <div className="text-center py-12 text-gray-500">
+              <div className="text-center py-8 text-gray-500 text-sm">
                 {t('calendar.noData')}
               </div>
             ) : (
-              <div className="grid grid-cols-7 gap-2 sm:gap-3">
+              <div className="grid grid-cols-7 gap-1 sm:gap-1.5">
                 {calendarDays.map((day, index) => (
                   <div
                     key={index}
-                    style={{ minHeight: '64px' }}
+                    style={{ minHeight: '44px' }}
                     className={`
-                      py-4 px-2 flex items-center justify-center rounded-lg text-lg font-semibold
+                      py-2 px-1 flex items-center justify-center rounded text-sm font-semibold
                       ${!day.isCurrentMonth ? 'text-gray-400 opacity-60' : ''}
                       ${day.isOccupied
-                        ? 'bg-red-100 text-red-800 border-2 border-red-400'
-                        : 'bg-green-100 text-green-800 border-2 border-green-400'
+                        ? 'bg-red-100 text-red-800 border border-red-400'
+                        : 'bg-green-100 text-green-800 border border-green-400'
                       }
                       ${!day.isCurrentMonth && day.isOccupied ? 'bg-red-50 border-red-300' : ''}
                       ${!day.isCurrentMonth && !day.isOccupied ? 'bg-green-50 border-green-300' : ''}
@@ -233,21 +233,21 @@ export const CalendarSection: React.FC = () => {
             )}
 
             {/* Legenda */}
-            <div className="flex items-center justify-center gap-6 mt-6 pt-6 border-t border-gray-200">
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 bg-green-100 border-2 border-green-300 rounded"></div>
-                <span className="text-sm text-gray-600">{t('calendar.available')}</span>
+            <div className="flex items-center justify-center gap-4 mt-4 pt-4 border-t border-gray-200">
+              <div className="flex items-center gap-1.5">
+                <div className="w-4 h-4 bg-green-100 border border-green-300 rounded"></div>
+                <span className="text-xs text-gray-600">{t('calendar.available')}</span>
               </div>
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 bg-red-100 border-2 border-red-300 rounded"></div>
-                <span className="text-sm text-gray-600">{t('calendar.occupied')}</span>
+              <div className="flex items-center gap-1.5">
+                <div className="w-4 h-4 bg-red-100 border border-red-300 rounded"></div>
+                <span className="text-xs text-gray-600">{t('calendar.occupied')}</span>
               </div>
             </div>
           </div>
         )}
 
-        <div className="mt-8 text-center">
-          <p className="text-sm text-gray-500 italic">
+        <div className="mt-6 text-center">
+          <p className="text-xs text-gray-500 italic">
             {t('calendar.disclaimer')}
           </p>
         </div>

@@ -26,7 +26,7 @@
     "subtitle": "Abbiamo curato ogni dettaglio per rendere il tuo soggiorno indimenticabile, combinando il comfort moderno con l'ospitalità tradizionale sarda.",
     "panoramicView": {
       "title": "Vista Panoramica",
-      "description": "Goditi tramonti spettacolari sulle colline e il castello della Fava dal terrazzo privato."
+      "description": "Terrazzo in camera per il tuo caffè e colazione con privacy o leggere libro la sera."
     },
     "airConditioning": {
       "title": "Aria Condizionata",
@@ -97,13 +97,13 @@
         "name": "Spiaggia di Berchida",
         "description": "Spiaggia incontaminata circondata da dune e ginepri, perfetta per chi cerca tranquillità e natura selvaggia."
       },
-      "calaLiberotto": {
-        "name": "Cala Liberotto",
-        "description": "Piccola baia con acque turchesi e scogli pittoreschi. Ottima per snorkeling e immersioni."
+      "calaBrandinchi": {
+        "name": "Spiaggia di Cala Brandinchi",
+        "description": "Conosciuta come la 'Piccola Tahiti' per le sue acque cristalline e la sabbia bianchissima. Una delle spiagge più belle della Sardegna."
       },
-      "orosei": {
-        "name": "Spiaggia di Orosei",
-        "description": "Lunga spiaggia di sabbia dorata con tutti i servizi, ristoranti e stabilimenti balneari."
+      "laCinta": {
+        "name": "Spiaggia La Cinta",
+        "description": "Lunga distesa di sabbia bianca e fine con acque poco profonde, ideale per famiglie e sport acquatici come windsurf e kitesurf."
       },
       "monteAlbo": {
         "name": "Monte Albo",
